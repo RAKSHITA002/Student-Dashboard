@@ -1,0 +1,28 @@
+<div class="container">
+    <form [formGroup]="userData" (submit)="add()" >
+        <div class="row">
+            <div class="col-lg-12">
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="name"
+                    [ngStyle]="{border : userData.get('name')?.dirty && !userData.get('name')?.valid? '1px solid red' : ''}" />
+                <span style="color : red;"
+                    *ngIf="userData.get('name')?.dirty && !userData.get('name')?.valid">Please enter valid
+                    Name</span>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <label>Email</label>
+                    <input type="text" class="form-control" formControlName="email"
+                        [ngStyle]="{border : userData.get('email')?.dirty && !userData.get('email')?.valid? '1px solid red' : ''}" />
+                    <span style="color : red;"
+                        *ngIf="userData.get('email')?.dirty && !userData.get('email')?.valid">Please enter valid
+                        Email
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <input type="submit" [disabled]="!userData.valid" class="btn btn-primary mt-2">
+        </div>
+    </form>
+</div>
